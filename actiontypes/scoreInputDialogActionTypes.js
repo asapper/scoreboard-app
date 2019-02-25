@@ -1,0 +1,2 @@
+const SHOW_DIALOG = 'SHOW_DIALOG';
+const HIDE_DIALOG = 'HIDE_DIALOG';
