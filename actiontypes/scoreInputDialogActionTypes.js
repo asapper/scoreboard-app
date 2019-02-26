@@ -1,2 +1,2 @@
-const SHOW_DIALOG = 'SHOW_DIALOG';
-const HIDE_DIALOG = 'HIDE_DIALOG';
+export const SHOW_DIALOG = 'scoreInput/SHOW_DIALOG';
+export const HIDE_DIALOG = 'scoreInput/HIDE_DIALOG';

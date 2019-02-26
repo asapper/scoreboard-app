@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
 import { Button, Dialog, Divider, Portal, TextInput } from 'react-native-paper';
+import PropTypes from 'prop-types';
 
-export default class ScoreInputDialog extends Component {
+class ScoreInputDialog extends Component {
 
-    // static propTypes = {
-        // scoreInputDialogVisible: PropTypes.bool.isRequired,
-        // scoreInputDialogPlayerIndex: PropTypes.number.isRequired,
-        // scoreInputDialogPlayerScore: PropTypes.number.isRequired,
-        // scoreInputDialogPlayerName: PropTypes.string.isRequired,
+    static propTypes = {
+        scoreInputDialogVisible: PropTypes.bool.isRequired,
+        scoreInputDialogPlayerIndex: PropTypes.number.isRequired,
+        scoreInputDialogPlayerScore: PropTypes.number.isRequired,
+        scoreInputDialogPlayerName: PropTypes.string.isRequired,
         // addScoreToPlayer: PropTypes.func.isRequired,
-        // hideScoreInputDialog: PropTypes.func.isRequired
-    // };
+        hideScoreInputDialog: PropTypes.func.isRequired
+    };
 
     render() {
         const {
@@ -64,13 +65,11 @@ const styles = StyleSheet.create({
     }
 });
 
-// const mapStateToProps = state => ({
-//     scoreInputDialogVisible: state.scoreInputDialogVisible,
-//     scoreInputDialogPlayerIndex: state.scoreInputDialogPlayerIndex,
-//     scoreInputDialogPlayerScore: state.scoreInputDialogPlayerScore,
-//     scoreInputDialogPlayerName: state.scoreInputDialogPlayerName,
-//     // addScoreToPlayer: state.addScoreToPlayer,
-//     // hideScoreInputDialog: state.hideScoreInputDialog
-// });
+const mapStateToProps = state => ({
+    scoreInputDialogVisible: state.scoreInputDialogVisible,
+    scoreInputDialogPlayerIndex: state.scoreInputDialogPlayerIndex,
+    scoreInputDialogPlayerScore: state.scoreInputDialogPlayerScore,
+    scoreInputDialogPlayerName: state.scoreInputDialogPlayerName
+});
 
-// export default connect(mapStateToProps)(ScoreInputDialog);
+export default connect(mapStateToProps)(ScoreInputDialog);
