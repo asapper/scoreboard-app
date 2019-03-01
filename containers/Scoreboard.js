@@ -6,10 +6,10 @@ import { FAB, List, Portal } from 'react-native-paper';
 
 import Player from '../components/Player';
 import Header from '../components/Header';
-import AddPlayerForm from '../components/AddPlayerForm';
 // dialogs
-import ScoreInput from '../components/dialogs/ScoreInput';
+import AddPlayerForm from '../components/dialogs/AddPlayerForm';
 import ResetGame from '../components/dialogs/ResetGame';
+import ScoreInput from '../components/dialogs/ScoreInput';
 
 import * as DialogActions from '../actions/DialogActions';
 import * as PlayerActions from '../actions/PlayerActions';
@@ -23,14 +23,14 @@ class Scoreboard extends Component {
 
   render() {
     const { dispatch, players } = this.props;
-    // score input actions
+    // dialog actions
     this.showScoreInputDialog = bindActionCreators(DialogActions.showScoreInputDialog, dispatch);
     this.hideScoreInputDialog = bindActionCreators(DialogActions.hideScoreInputDialog, dispatch);
     this.showResetGameDialog = bindActionCreators(DialogActions.showResetGameDialog, dispatch);
     this.hideResetGameDialog = bindActionCreators(DialogActions.hideResetGameDialog, dispatch);
+    this.showNewPlayerDialog = bindActionCreators(DialogActions.showAddPlayerDialog, dispatch);
+    this.hideNewPlayerDialog = bindActionCreators(DialogActions.hideAddPlayerDialog, dispatch);
     // player actions
-    this.showNewPlayerDialog = bindActionCreators(PlayerActions.showAddPlayerDialog, dispatch);
-    this.hideNewPlayerDialog = bindActionCreators(PlayerActions.hideAddPlayerDialog, dispatch);
     this.addNewPlayer = bindActionCreators(PlayerActions.addPlayer, dispatch);
     this.addScoreToPlayer = bindActionCreators(PlayerActions.addScoreToPlayer, dispatch);
     this.resetGame = bindActionCreators(PlayerActions.resetGame, dispatch);

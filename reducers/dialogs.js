@@ -1,9 +1,13 @@
 import * as DialogActionTypes from '../actiontypes/DialogActionTypes';
 
 const initialState = {
+  // new player dialog
+  newPlayerDialogVisible: false,
+  // score input dialog
   scoreInputDialogVisible: false,
   playerIndex: 0,
   name: '',
+  // reset game dialog
   resetGameDialogVisible: false,
 };
 
@@ -38,6 +42,22 @@ export default function Dialogs(state=initialState, action) {
         ...state,
         resetGameDialogVisible: false
       }
+    
+    
+    // handle showing new player dialog
+    case DialogActionTypes.SHOW_NEW_PLAYER_DIALOG: {
+      return {
+        ...state,
+        newPlayerDialogVisible: true
+      };
+    }
+    // handle hiding new player dialog
+    case DialogActionTypes.HIDE_NEW_PLAYER_DIALOG: {
+      return {
+        ...state,
+        newPlayerDialogVisible: false
+      };
+    }
 
     default:
       return state;

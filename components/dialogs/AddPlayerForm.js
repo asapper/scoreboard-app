@@ -13,7 +13,6 @@ class AddPlayerForm extends Component {
     }
 
     static propTypes = {
-        players: PropTypes.array.isRequired,
         newPlayerDialogVisible: PropTypes.bool.isRequired,
         hideDialog: PropTypes.func.isRequired,
         addNewPlayer: PropTypes.func.isRequired
@@ -28,6 +27,7 @@ class AddPlayerForm extends Component {
         if (this.isNameInputValid()) {
             // add new player
             this.props.addNewPlayer(this.state.nameInput, this.state.scoreInput);
+            this.props.hideDialog();
         } else {
             this.setState({ nameInputError: true });
         }
@@ -96,8 +96,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = state => ({
-    players: state.player.players,
-    newPlayerDialogVisible: state.player.newPlayerDialogVisible
+    newPlayerDialogVisible: state.dialogs.newPlayerDialogVisible
 });
 
 export default connect(mapStateToProps)(AddPlayerForm);

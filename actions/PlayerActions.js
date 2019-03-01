@@ -1,19 +1,5 @@
 import * as PlayerActionTypes from '../actiontypes/PlayerActionTypes';
 
-// new player dialog
-export const showAddPlayerDialog = () => {
-    return {
-        type: PlayerActionTypes.SHOW_NEW_PLAYER_FORM
-    }
-}
-
-export const hideAddPlayerDialog = () => {
-    return {
-        type: PlayerActionTypes.HIDE_NEW_PLAYER_FORM
-    }
-}
-// new player dialog
-
 // add player
 export const addPlayer = (name, score) => {
     return {

@@ -1,42 +1,22 @@
 import * as PlayerActionTypes from '../actiontypes/PlayerActionTypes';
 
 const initialState = {
-    players: [{
-        name: 'Andy',
-        score: 1250
-    }],
-    newPlayerDialogVisible: false
+    players: [],
 }
 
 export default function Player(state=initialState, action) {
     switch(action.type) {
-        // handle showing new player dialog
-        case PlayerActionTypes.SHOW_NEW_PLAYER_FORM: {
-            return {
-                ...state,
-                newPlayerDialogVisible: true
-            };
-        }
-        // handle hiding new player dialog
-        case PlayerActionTypes.HIDE_NEW_PLAYER_FORM: {
-            return {
-                ...state,
-                newPlayerDialogVisible: false
-            };
-        }
         // handle adding new player
         case PlayerActionTypes.ADD_PLAYER: {
             return {
                 ...state,
-                // hide dialog
-                newPlayerDialogVisible: false,
                 players: [
                     // store old players
                     ...state.players,
                     // add new player
                     {
                         name: action.name,
-                        score: action.score
+                        score: parseInt(action.score)
                     }
                 ]
             };

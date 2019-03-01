@@ -17,7 +17,6 @@ export const hideScoreInputDialog = () => {
   }
 }
 
-
 /*
  * Reset game confirmation actions
  */
@@ -25,10 +24,26 @@ export const showResetGameDialog = () => {
   return {
     type: DialogActionTypes.SHOW_RESET_GAME_DIALOG
   }
-};
+}
 
 export const hideResetGameDialog = () => {
   return {
     type: DialogActionTypes.HIDE_RESET_GAME_DIALOG
   }
-};
+}
+
+/*
+ * New player actions
+ */
+export const showAddPlayerDialog = () => {
+  return {
+      type: DialogActionTypes.SHOW_NEW_PLAYER_DIALOG
+  }
+}
+
+export const hideAddPlayerDialog = () => {
+  return {
+    type: DialogActionTypes.HIDE_NEW_PLAYER_DIALOG
+  }
+}
+// new player dialog
