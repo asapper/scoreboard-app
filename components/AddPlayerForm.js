@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Dialog, Divider, Portal, TextInput } from 'react-native-paper';
+import { Button, Dialog, Divider, Portal, TextInput, HelperText } from 'react-native-paper';
 import PropTypes from 'prop-types';
 
 class AddPlayerForm extends Component {
 
     state = {
-        newPlayerNameInput: '',
-        newPlayerScoreInput: 0
+        nameInput: '',
+        scoreInput: 0,
+        nameInputError: false
     }
 
     static propTypes = {
@@ -16,10 +17,20 @@ class AddPlayerForm extends Component {
         newPlayerDialogVisible: PropTypes.bool.isRequired,
         hideDialog: PropTypes.func.isRequired,
         addNewPlayer: PropTypes.func.isRequired
-    };
+    }
+
+    isNameInputValid = () => {
+        return this.state.nameInput.length > 0;
+    }
 
     handleAddNewPlayer = () => {
-        this.props.addNewPlayer(this.state.newPlayerNameInput, this.state.newPlayerScoreInput);
+        // verify name is not empty
+        if (this.isNameInputValid()) {
+            // add new player
+            this.props.addNewPlayer(this.state.nameInput, this.state.scoreInput);
+        } else {
+            this.setState({ nameInputError: true });
+        }
     }
 
     render() {
@@ -39,16 +50,22 @@ class AddPlayerForm extends Component {
                 <Divider />
                 {/* New Player dialog: body */}
                 <Dialog.Content>
-                    {/* Input: player name */}
-                    <TextInput
-                        label='Name'
-                        placeholder="New player's name"
-                        selectionColor='#4e91fc'
-                        underlineColor='#4e91fc'
-                        style={styles.formInput}
-                        onChangeText={(newPlayerNameInput) => this.setState({ newPlayerNameInput })}
-                        onSubmitEditing={this.handleAddNewPlayer}
-                    />
+                    <View>
+                        {/* Input: player name */}
+                        <TextInput
+                            label='Name'
+                            placeholder="New player's name"
+                            selectionColor='#4e91fc'
+                            underlineColor='#4e91fc'
+                            style={styles.formInput}
+                            onChangeText={(nameInput) => this.setState({ nameInput })}
+                            onSubmitEditing={this.handleAddNewPlayer}
+                            error={this.state.nameInputError}
+                        />
+                        <HelperText type="error" visible={this.state.nameInputError}>
+                            Error: empty name not allowed
+                        </HelperText>
+                    </View>
                     {/* Input: player initial score */}
                     <TextInput
                         label='Initial score'
@@ -56,7 +73,7 @@ class AddPlayerForm extends Component {
                         selectionColor='#4e91fc'
                         underlineColor='#4e91fc'
                         style={styles.formInput}
-                        onChangeText={(newPlayerScoreInput) => this.setState({ newPlayerScoreInput })}
+                        onChangeText={(scoreInput) => this.setState({ scoreInput })}
                         onSubmitEditing={this.handleAddNewPlayer}
                         keyboardType='number-pad'
                     />

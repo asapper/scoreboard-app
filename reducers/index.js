@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import scoreInput from './scoreInput';
+import dialogs from './dialogs';
 import player from './player';
 
 export default combineReducers({
-    scoreInput,
+    dialogs,
     player
 });

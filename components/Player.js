@@ -9,8 +9,7 @@ export default class Player extends Component {
     name: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     index: PropTypes.number.isRequired,
-    showScoreInputDialog: PropTypes.func.isRequired,
-    // removePlayer: PropTypes.func.isRequired,
+    showScoreInputDialog: PropTypes.func.isRequired
   };
 
   render() {
@@ -19,15 +18,14 @@ export default class Player extends Component {
       name,
       score,
       index,
-      showScoreInputDialog,
-      // removePlayer
+      showScoreInputDialog
     } = this.props;
 
     return (
       <List.Item
         key={index}
-        title={name}
-        right={() => <Text>{score}</Text>}
+        title={<Text style={styles.playerRow}>{name}</Text>}
+        right={() => <Text style={styles.scores}>{score}</Text>}
         onPress={() => showScoreInputDialog(index, name)}
       />
     );
@@ -35,4 +33,11 @@ export default class Player extends Component {
 }
 
 const styles = StyleSheet.create({
+  playerRow: {
+    fontSize: 35
+  },
+  scores: {
+    alignSelf: 'center',
+    fontSize: 35,
+  }
 });

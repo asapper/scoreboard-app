@@ -1,7 +1,10 @@
 import * as PlayerActionTypes from '../actiontypes/PlayerActionTypes';
 
 const initialState = {
-    players: [],
+    players: [{
+        name: 'Andy',
+        score: 1250
+    }],
     newPlayerDialogVisible: false
 }
 
