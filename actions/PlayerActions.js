@@ -24,3 +24,11 @@ export const resetGame = () => {
         type: PlayerActionTypes.RESET_GAME
     }
 }
+
+// remove player
+export const removePlayer = index => {
+    return {
+        type: PlayerActionTypes.REMOVE_PLAYER,
+        index
+    }
+}

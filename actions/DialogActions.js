@@ -46,4 +46,20 @@ export const hideAddPlayerDialog = () => {
     type: DialogActionTypes.HIDE_NEW_PLAYER_DIALOG
   }
 }
-// new player dialog
+
+/*
+ * Remove player actions
+ */
+export const showRemovePlayerDialog = (playerIndex, name) => {
+  return {
+    type: DialogActionTypes.SHOW_REMOVE_PLAYER_DIALOG,
+    playerIndex,
+    name
+  }
+}
+
+export const hideRemovePlayerDialog = () => {
+  return {
+    type: DialogActionTypes.HIDE_REMOVE_PLAYER_DIALOG
+  }
+}

@@ -9,6 +9,8 @@ const initialState = {
   name: '',
   // reset game dialog
   resetGameDialogVisible: false,
+  // remove player dialog
+  removePlayerDialogVisible: false,
 };
 
 export default function Dialogs(state=initialState, action) {
@@ -44,19 +46,36 @@ export default function Dialogs(state=initialState, action) {
       }
     
     
-    // handle showing new player dialog
+    // New player reducers
     case DialogActionTypes.SHOW_NEW_PLAYER_DIALOG: {
       return {
         ...state,
         newPlayerDialogVisible: true
       };
     }
-    // handle hiding new player dialog
+    
     case DialogActionTypes.HIDE_NEW_PLAYER_DIALOG: {
       return {
         ...state,
         newPlayerDialogVisible: false
       };
+    }
+
+    // Remove player reducers
+    case DialogActionTypes.SHOW_REMOVE_PLAYER_DIALOG: {
+      return {
+        ...state,
+        removePlayerDialogVisible: true,
+        playerIndex: action.playerIndex,
+        name: action.name
+      }
+    }
+
+    case DialogActionTypes.HIDE_REMOVE_PLAYER_DIALOG: {
+      return {
+        ...state,
+        removePlayerDialogVisible: false
+      }
     }
 
     default:

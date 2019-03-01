@@ -9,7 +9,8 @@ export default class Player extends Component {
     name: PropTypes.string.isRequired,
     score: PropTypes.number.isRequired,
     index: PropTypes.number.isRequired,
-    showScoreInputDialog: PropTypes.func.isRequired
+    showScoreInputDialog: PropTypes.func.isRequired,
+    showRemovePlayerDialog: PropTypes.func.isRequired,
   };
 
   render() {
@@ -18,7 +19,8 @@ export default class Player extends Component {
       name,
       score,
       index,
-      showScoreInputDialog
+      showScoreInputDialog,
+      showRemovePlayerDialog
     } = this.props;
 
     return (
@@ -27,6 +29,7 @@ export default class Player extends Component {
         title={<Text style={styles.playerRow}>{name}</Text>}
         right={() => <Text style={styles.scores}>{score}</Text>}
         onPress={() => showScoreInputDialog(index, name)}
+        onLongPress={() => showRemovePlayerDialog(index, name)}
       />
     );
   }

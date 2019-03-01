@@ -10,6 +10,7 @@ import Header from '../components/Header';
 import AddPlayerForm from '../components/dialogs/AddPlayerForm';
 import ResetGame from '../components/dialogs/ResetGame';
 import ScoreInput from '../components/dialogs/ScoreInput';
+import RemovePlayer from '../components/dialogs/RemovePlayer';
 
 import * as DialogActions from '../actions/DialogActions';
 import * as PlayerActions from '../actions/PlayerActions';
@@ -24,15 +25,23 @@ class Scoreboard extends Component {
   render() {
     const { dispatch, players } = this.props;
     // dialog actions
+    // dialog: score input
     this.showScoreInputDialog = bindActionCreators(DialogActions.showScoreInputDialog, dispatch);
     this.hideScoreInputDialog = bindActionCreators(DialogActions.hideScoreInputDialog, dispatch);
+    // dialog: reset game
     this.showResetGameDialog = bindActionCreators(DialogActions.showResetGameDialog, dispatch);
     this.hideResetGameDialog = bindActionCreators(DialogActions.hideResetGameDialog, dispatch);
+    // dialog: new player
     this.showNewPlayerDialog = bindActionCreators(DialogActions.showAddPlayerDialog, dispatch);
     this.hideNewPlayerDialog = bindActionCreators(DialogActions.hideAddPlayerDialog, dispatch);
+    // dialog: remove player
+    this.showRemovePlayerDialog = bindActionCreators(DialogActions.showRemovePlayerDialog, dispatch);
+    this.hideRemovePlayerDialog = bindActionCreators(DialogActions.hideRemovePlayerDialog, dispatch);
+
     // player actions
     this.addNewPlayer = bindActionCreators(PlayerActions.addPlayer, dispatch);
     this.addScoreToPlayer = bindActionCreators(PlayerActions.addScoreToPlayer, dispatch);
+    this.removePlayer = bindActionCreators(PlayerActions.removePlayer, dispatch);
     this.resetGame = bindActionCreators(PlayerActions.resetGame, dispatch);
 
     return (
@@ -47,6 +56,7 @@ class Scoreboard extends Component {
             score={player.score}
             name={player.name}
             showScoreInputDialog={this.showScoreInputDialog}
+            showRemovePlayerDialog={this.showRemovePlayerDialog}
           />
         )}
         </List.Section>
@@ -72,6 +82,9 @@ class Scoreboard extends Component {
 
         {/* Confirm game reset dialog */}
         <ResetGame resetGame={this.resetGame} hideDialog={this.hideResetGameDialog} />
+
+        {/* Remove player dialog */}
+        <RemovePlayer removePlayer={this.removePlayer} hideDialog={this.hideRemovePlayerDialog} />
 
       </ScrollView>
     );
