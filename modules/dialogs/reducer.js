@@ -1,12 +1,12 @@
-import * as DialogActionTypes from '../actiontypes/DialogActionTypes';
+import * as DialogActionTypes from './actionTypes';
 
 const initialState = {
-  // new player dialog
-  newPlayerDialogVisible: false,
   // score input dialog
   scoreInputDialogVisible: false,
   playerIndex: 0,
   name: '',
+  // new player dialog
+  newPlayerDialogVisible: false,
   // reset game dialog
   resetGameDialogVisible: false,
   // remove player dialog

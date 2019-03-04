@@ -3,17 +3,23 @@ import { ScrollView, StyleSheet, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FAB, List, Portal } from 'react-native-paper';
+import { createStructuredSelector } from 'reselect';
 
-import Player from '../components/Player';
-import Header from '../components/Header';
+// core
+import Header from '../modules/core/components/Header';
+// player
+import Player from '../modules/players/components/Player';
 // dialogs
-import AddPlayerForm from '../components/dialogs/AddPlayerForm';
-import ResetGame from '../components/dialogs/ResetGame';
-import ScoreInput from '../components/dialogs/ScoreInput';
-import RemovePlayer from '../components/dialogs/RemovePlayer';
+import AddPlayerForm from '../modules/dialogs/components/AddPlayerForm';
+import ResetGame from '../modules/dialogs/components/ResetGame';
+import ScoreInput from '../modules/dialogs/components/ScoreInput';
+import RemovePlayer from '../modules/dialogs/components/RemovePlayer';
 
-import * as DialogActions from '../actions/DialogActions';
-import * as PlayerActions from '../actions/PlayerActions';
+// actions
+import * as DialogActions from '../modules/dialogs/actions';
+import * as PlayerActions from '../modules/players/actions';
+// selectors
+import { getAllPlayers } from '../modules/players/selectors';
 
 
 class Scoreboard extends Component {
@@ -104,8 +110,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
-  players: state.player.players,
+const mapStateToProps = createStructuredSelector({
+  players: getAllPlayers,
 });
 
 export default connect(mapStateToProps)(Scoreboard);

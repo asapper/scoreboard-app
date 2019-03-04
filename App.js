@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { createStore } from 'redux';
-import reducer from './reducers/index';
+import rootReducer from './reducers/rootReducer';
 import Scoreboard from './containers/Scoreboard';
 
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 
 export default class App extends Component {
 

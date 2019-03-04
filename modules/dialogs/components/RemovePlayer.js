@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Dialog, Portal, Text } from 'react-native-paper';
 import PropTypes from 'prop-types';
+import { createStructuredSelector } from 'reselect';
+
+import { isRemovePlayerDialogVisible, getPlayerIndex, getName } from '../selectors';
 
 class RemovePlayer extends Component {
   static propTypes = {
@@ -51,10 +54,10 @@ class RemovePlayer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  dialogVisible: state.dialogs.removePlayerDialogVisible,
-  playerIndex: state.dialogs.playerIndex,
-  name: state.dialogs.name,
+const mapStateToProps = createStructuredSelector({
+  dialogVisible: isRemovePlayerDialogVisible,
+  playerIndex: getPlayerIndex,
+  name: getName,
 });
 
 export default connect(mapStateToProps)(RemovePlayer);

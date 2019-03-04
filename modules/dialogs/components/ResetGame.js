@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, Dialog, Portal, Text } from 'react-native-paper';
 import PropTypes from 'prop-types';
+import { createStructuredSelector } from 'reselect';
+
+import { isResetGameDialogVisible } from '../selectors';
 
 class ResetGame extends Component {
   static propTypes = {
@@ -49,8 +52,8 @@ class ResetGame extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  dialogVisible: state.dialogs.resetGameDialogVisible,
+const mapStateToProps = createStructuredSelector({
+  dialogVisible: isResetGameDialogVisible,
 });
 
 export default connect(mapStateToProps)(ResetGame);

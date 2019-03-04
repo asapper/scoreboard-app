@@ -3,9 +3,11 @@ import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Dialog, Divider, Portal, TextInput, HelperText } from 'react-native-paper';
 import PropTypes from 'prop-types';
+import { createStructuredSelector } from 'reselect';
+
+import { isNewPlayerDialogVisible } from '../selectors';
 
 class AddPlayerForm extends Component {
-
     state = {
         nameInput: '',
         scoreInput: 0,
@@ -13,7 +15,7 @@ class AddPlayerForm extends Component {
     }
 
     static propTypes = {
-        newPlayerDialogVisible: PropTypes.bool.isRequired,
+        dialogVisible: PropTypes.bool.isRequired,
         hideDialog: PropTypes.func.isRequired,
         addNewPlayer: PropTypes.func.isRequired
     }
@@ -35,14 +37,14 @@ class AddPlayerForm extends Component {
 
     render() {
         const {
-            newPlayerDialogVisible,
+            dialogVisible,
             hideDialog
         } = this.props;
 
         return (
             <Portal>
                 <Dialog
-                    visible={newPlayerDialogVisible}
+                    visible={dialogVisible}
                     onDismiss={hideDialog}
                 >
                 {/* New Player dialog: title */}
@@ -95,8 +97,8 @@ const styles = StyleSheet.create({
     }
 });
 
-const mapStateToProps = state => ({
-    newPlayerDialogVisible: state.dialogs.newPlayerDialogVisible
+const mapStateToProps = createStructuredSelector({
+    dialogVisible: isNewPlayerDialogVisible
 });
 
 export default connect(mapStateToProps)(AddPlayerForm);

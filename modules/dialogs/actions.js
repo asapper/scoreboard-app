@@ -1,4 +1,4 @@
-import * as DialogActionTypes from '../actiontypes/DialogActionTypes';
+import * as DialogActionTypes from './actionTypes';
 
 /*
  * Score Input actions

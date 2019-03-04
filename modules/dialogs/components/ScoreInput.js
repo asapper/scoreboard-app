@@ -3,6 +3,9 @@ import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { Button, Dialog, Divider, Portal, TextInput } from 'react-native-paper';
 import PropTypes from 'prop-types';
+import { createStructuredSelector } from 'reselect';
+
+import { isScoreInputDialogVisible, getPlayerIndex, getName } from '../selectors';
 
 class ScoreInput extends Component {
   state = {
@@ -70,10 +73,10 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
-  dialogVisible: state.dialogs.scoreInputDialogVisible,
-  playerIndex: state.dialogs.playerIndex,
-  name: state.dialogs.name
+const mapStateToProps = createStructuredSelector({
+  dialogVisible: isScoreInputDialogVisible,
+  playerIndex: getPlayerIndex,
+  name: getName
 });
 
 export default connect(mapStateToProps)(ScoreInput);
