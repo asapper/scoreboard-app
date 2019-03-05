@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { FAB, List, Portal } from 'react-native-paper';
 
 // core components
 import Header from '../modules/core/components/Header';
+import FloatingActionButton from '../modules/core/components/FloatingActionButton';
 // player list component
 import PlayerList from '../modules/players/components/PlayerList';
 // dialog components
@@ -20,11 +20,7 @@ import * as PlayerActions from '../modules/players/actions';
 
 
 class Scoreboard extends Component {
-  state = {
-    fabOpen: false,
-    fabVisible: true,
-  }
-
+  
   render() {
     const { dispatch, players } = this.props;
     // dialog actions
@@ -49,26 +45,12 @@ class Scoreboard extends Component {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
+        {/* Appbar header */}
         <Header title="Scoreboard" />
-        
-        <PlayerList
-          showScoreInputDialog={this.showScoreInputDialog}
-          showRemovePlayerDialog={this.showRemovePlayerDialog}
-        />
-
-        <Portal>
-          <FAB.Group
-            open={this.state.fabOpen}
-            icon={this.state.fabOpen ? 'clear' : 'add'}
-            actions={[
-              { icon: 'person-add', label: 'Add player', onPress: this.showNewPlayerDialog },
-              { icon: 'autorenew', label: 'New game', onPress: this.showResetGameDialog },
-            ]}
-            onStateChange={({ open }) => this.setState({ fabOpen: open })}
-            visible={this.state.fabVisible}
-          />
-        </Portal>
-
+        {/* Player list */}
+        <PlayerList showScoreInputDialog={this.showScoreInputDialog} showRemovePlayerDialog={this.showRemovePlayerDialog} />
+        {/* Floating action button: new player and reset game dialogs */}
+        <FloatingActionButton showNewPlayerDialog={this.showNewPlayerDialog} showResetGameDialog={this.showResetGameDialog} />
         {/* New Player dialog */}
         <AddPlayerForm addNewPlayer={this.addNewPlayer} hideDialog={this.hideNewPlayerDialog} />
         {/* Score input dialog */}
@@ -77,7 +59,6 @@ class Scoreboard extends Component {
         <ResetGame resetGame={this.resetGame} hideDialog={this.hideResetGameDialog} />
         {/* Remove player dialog */}
         <RemovePlayer removePlayer={this.removePlayer} hideDialog={this.hideRemovePlayerDialog} />
-
       </ScrollView>
     );
   }
