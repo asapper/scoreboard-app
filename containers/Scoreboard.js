@@ -3,13 +3,12 @@ import { ScrollView, StyleSheet, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { FAB, List, Portal } from 'react-native-paper';
-import { createStructuredSelector } from 'reselect';
 
-// core
+// core components
 import Header from '../modules/core/components/Header';
-// player
-import Player from '../modules/players/components/Player';
-// dialogs
+// player list component
+import PlayerList from '../modules/players/components/PlayerList';
+// dialog components
 import AddPlayerForm from '../modules/dialogs/components/AddPlayerForm';
 import ResetGame from '../modules/dialogs/components/ResetGame';
 import ScoreInput from '../modules/dialogs/components/ScoreInput';
@@ -18,8 +17,6 @@ import RemovePlayer from '../modules/dialogs/components/RemovePlayer';
 // actions
 import * as DialogActions from '../modules/dialogs/actions';
 import * as PlayerActions from '../modules/players/actions';
-// selectors
-import { getAllPlayers } from '../modules/players/selectors';
 
 
 class Scoreboard extends Component {
@@ -53,19 +50,11 @@ class Scoreboard extends Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Header title="Scoreboard" />
-
-        <List.Section>
-        {players.map( (player, index) =>
-          <Player
-            key={index}
-            index={index}
-            score={player.score}
-            name={player.name}
-            showScoreInputDialog={this.showScoreInputDialog}
-            showRemovePlayerDialog={this.showRemovePlayerDialog}
-          />
-        )}
-        </List.Section>
+        
+        <PlayerList
+          showScoreInputDialog={this.showScoreInputDialog}
+          showRemovePlayerDialog={this.showRemovePlayerDialog}
+        />
 
         <Portal>
           <FAB.Group
@@ -82,13 +71,10 @@ class Scoreboard extends Component {
 
         {/* New Player dialog */}
         <AddPlayerForm addNewPlayer={this.addNewPlayer} hideDialog={this.hideNewPlayerDialog} />
-
         {/* Score input dialog */}
         <ScoreInput addScoreToPlayer={this.addScoreToPlayer} hideDialog={this.hideScoreInputDialog} />
-
         {/* Confirm game reset dialog */}
         <ResetGame resetGame={this.resetGame} hideDialog={this.hideResetGameDialog} />
-
         {/* Remove player dialog */}
         <RemovePlayer removePlayer={this.removePlayer} hideDialog={this.hideRemovePlayerDialog} />
 
@@ -110,8 +96,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = createStructuredSelector({
-  players: getAllPlayers,
-});
-
-export default connect(mapStateToProps)(Scoreboard);
+export default connect(null)(Scoreboard);
