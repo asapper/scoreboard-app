@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Avatar, Card, IconButton, List } from 'react-native-paper';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { Avatar, IconButton, Surface } from 'react-native-paper';
 import PropTypes from 'prop-types';
 
 export default class Player extends Component {
@@ -24,36 +24,49 @@ export default class Player extends Component {
     } = this.props;
 
     return (
-      <Card
-        elevation={1}
-        style={styles.card}
-        onPress={() => showScoreInputDialog(index, name)}
-        onLongPress={() => showRemovePlayerDialog(index, name)}
-      >
-        {/* Player card: title */}
-        <Card.Title
-          title={name}
-          titleStyle={styles.playerRow}
-          left={() => <Avatar.Icon icon="person" size={40} />}
-          right={() => <View style={styles.scores}><Text style={styles.scoreText}>{score}</Text><IconButton icon="more-vert" /></View> }
-        />
-      </Card>
+      <Surface style={styles.playerRowContent}>
+        <TouchableOpacity activeOpacity={0.9} style={styles.playerData} onPress={() => showScoreInputDialog(index, name)} >
+          <Avatar.Icon style={styles.playerAvatar} icon="person" size={40} />
+          <Text style={styles.playerTextInfo}>{name}</Text>
+          <Text style={[styles.playerTextInfo, styles.playerScore]}>{score}</Text>
+        </TouchableOpacity>
+        <IconButton style={styles.moreIcon} icon="more-vert" onPress={() => showRemovePlayerDialog(index, name)} />
+      </Surface>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  playerRow: {
-    fontSize: 25,
-    fontWeight: 'normal'
-  },
-  scores: {
+  playerRowContent: {
+    marginTop: 20,
+    marginBottom: 0,
+    marginLeft: 15,
+    marginRight: 15,
+    padding: 15,
+    elevation: 2,
+    borderRadius: 10,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
-    alignItems: 'stretch',
+    alignItems: 'center',
   },
-  scoreText: {
+  playerData: {
+    flex: 9,
+    flexDirection: 'row',
+  },
+  playerAvatar: {
+    flex: 1,
+    marginRight: 10,
+    backgroundColor: 'steelblue'
+  },
+  playerTextInfo: {
+    flex: 3,
+    fontSize: 35,
     alignSelf: 'center',
-    fontSize: 25,
+  },
+  playerScore: {
+    textAlign: 'right',
+  },
+  moreIcon: {
+    flex: 1,
   }
 });

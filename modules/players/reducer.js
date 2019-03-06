@@ -1,10 +1,20 @@
 import * as PlayerActionTypes from './actionTypes';
 
 const initialState = {
-    players: [{
+    players: [
+      {
         name: 'Andy',
         score: 1250
-    }],
+      },
+      {
+        name: 'Nicole',
+        score: 2500
+      },
+      {
+        name: 'Mela',
+        score: 3025
+      },
+    ],
 }
 
 export default function Player(state=initialState, action) {

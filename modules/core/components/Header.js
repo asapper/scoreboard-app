@@ -5,24 +5,24 @@ import { Appbar } from 'react-native-paper';
 
 export default class Header extends Component {
 
+  static propTypes = {
+    title: PropTypes.string
+  };
+
+  static defaultProps = {
+    title: 'Scoreboard'
+  };
+
   render() {
     const { title } = this.props;
 
     return (
-        <Appbar.Header>
-          <Appbar.Content title={title} titleStyle={styles.title} />
-        </Appbar.Header>
+      <Appbar.Header>
+        <Appbar.Content title={title} titleStyle={styles.title} />
+      </Appbar.Header>
     );
   }
 }
-
-Header.propTypes = {
-  title: PropTypes.string
-};
-
-Header.defaultProps = {
-  title: 'Scoreboard App'
-};
 
 const styles = StyleSheet.create({
   title: {

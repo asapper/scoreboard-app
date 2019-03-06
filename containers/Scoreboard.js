@@ -46,7 +46,7 @@ class Scoreboard extends Component {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         {/* Appbar header */}
-        <Header title="Scoreboard" />
+        <Header />
         {/* Player list */}
         <PlayerList showScoreInputDialog={this.showScoreInputDialog} showRemovePlayerDialog={this.showRemovePlayerDialog} />
         {/* Floating action button: new player and reset game dialogs */}
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#fff',
+    backgroundColor: '#efefef',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
   },
