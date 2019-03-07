@@ -1,35 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Button, Dialog, Portal, Text } from 'react-native-paper';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 
+// actions
+import * as DialogActions from '../actions';
+import * as PlayerActions from '../../players/actions';
+// selectors
 import { isResetGameDialogVisible } from '../selectors';
 
 class ResetGame extends Component {
   static propTypes = {
-    dialogVisible: PropTypes.bool.isRequired,
-    hideDialog: PropTypes.func.isRequired,
-    resetGame: PropTypes.func.isRequired
+    dialogVisible: PropTypes.bool.isRequired
   };
 
   handleResetGame = () => {
-    const { resetGame, hideDialog } = this.props;
-    resetGame();
-    hideDialog();
+    this.resetGame();
+    this.hideDialog();
   }
 
   render() {
-    const {
-      dialogVisible,
-      hideDialog
-    } = this.props;
+    const { dispatch, dialogVisible } = this.props;
+
+    // dialog actions
+    // dialog: reset game
+    this.hideDialog = bindActionCreators(DialogActions.hideResetGameDialog, dispatch);
+    // player actions
+    this.resetGame = bindActionCreators(PlayerActions.resetGame, dispatch);
 
     return (
       <Portal>
         <Dialog
           visible={dialogVisible}
-          onDismiss={hideDialog}
+          onDismiss={this.hideDialog}
         >
           {/* Game reset dialog: title */}
           <Dialog.Title>Warning!</Dialog.Title>
@@ -44,7 +49,7 @@ class ResetGame extends Component {
           {/* Game reset dialog: action buttons */}
           <Dialog.Actions>
             <Button onPress={this.handleResetGame}>Continue</Button>
-            <Button onPress={hideDialog}>Cancel</Button>
+            <Button onPress={this.hideDialog}>Cancel</Button>
           </Dialog.Actions>
         </Dialog>
       </Portal>

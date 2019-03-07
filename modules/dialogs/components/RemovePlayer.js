@@ -12,13 +12,15 @@ class RemovePlayer extends Component {
     playerIndex: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     hideDialog: PropTypes.func.isRequired,
-    removePlayer: PropTypes.func.isRequired
+    removePlayer: PropTypes.func.isRequired,
+    hidePlayerInfoDialog: PropTypes.func.isRequired,
   };
 
   handleRemovePlayer = () => {
-    const { playerIndex, removePlayer, hideDialog } = this.props;
+    const { playerIndex, removePlayer, hideDialog, hidePlayerInfoDialog } = this.props;
     removePlayer(playerIndex);
     hideDialog();
+    hidePlayerInfoDialog();
   }
 
   render() {

@@ -13,3 +13,7 @@ export const HIDE_NEW_PLAYER_DIALOG = 'dialogs/HIDE_NEW_PLAYER_DIALOG';
 // Remove player dialog
 export const SHOW_REMOVE_PLAYER_DIALOG = 'dialogs/SHOW_REMOVE_PLAYER_DIALOG';
 export const HIDE_REMOVE_PLAYER_DIALOG = 'dialogs/HIDE_REMOVE_PLAYER_DIALOG';
+
+// Player Info dialog
+export const SHOW_PLAYER_INFO_DIALOG = 'dialogs/SHOW_PLAYER_INFO_DIALOG';
+export const HIDE_PLAYER_INFO_DIALOG = 'dialogs/HIDE_PLAYER_INFO_DIALOG';

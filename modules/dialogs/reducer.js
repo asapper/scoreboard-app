@@ -11,6 +11,9 @@ const initialState = {
   resetGameDialogVisible: false,
   // remove player dialog
   removePlayerDialogVisible: false,
+  // player info dialog
+  playerInfoDialogVisible: false,
+  currentScore: 0,
 };
 
 export default function Dialogs(state=initialState, action) {
@@ -75,6 +78,24 @@ export default function Dialogs(state=initialState, action) {
       return {
         ...state,
         removePlayerDialogVisible: false
+      }
+    }
+
+    // Player info reducers
+    case DialogActionTypes.SHOW_PLAYER_INFO_DIALOG: {
+      return {
+        ...state,
+        playerInfoDialogVisible: true,
+        playerIndex: action.playerIndex,
+        name: action.name,
+        currentScore: action.score
+      }
+    }
+
+    case DialogActionTypes.HIDE_PLAYER_INFO_DIALOG: {
+      return {
+        ...state,
+        playerInfoDialogVisible: false
       }
     }
 

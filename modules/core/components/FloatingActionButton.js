@@ -18,17 +18,17 @@ export default class FloatingActionButton extends Component {
 
     return (
       <Portal>
-          <FAB.Group
-            open={this.state.fabOpen}
-            icon={this.state.fabOpen ? 'clear' : 'add'}
-            actions={[
-              { icon: 'person-add', label: 'Add player', onPress: showNewPlayerDialog },
-              { icon: 'autorenew', label: 'New game', onPress: showResetGameDialog },
-            ]}
-            onStateChange={({ open }) => this.setState({ fabOpen: open })}
-            visible={this.state.fabVisible}
-          />
-        </Portal>
+        <FAB.Group
+          open={this.state.fabOpen}
+          icon={this.state.fabOpen ? 'clear' : 'add'}
+          actions={[
+            { icon: 'person-add', label: 'Add player', onPress: showNewPlayerDialog },
+            { icon: 'autorenew', label: 'New game', onPress: showResetGameDialog },
+          ]}
+          onStateChange={({ open }) => this.setState({ fabOpen: open })}
+          visible={this.state.fabVisible}
+        />
+      </Portal>
     );
   }
 }

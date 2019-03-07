@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Avatar, IconButton, Surface } from 'react-native-paper';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import { Avatar, IconButton, Surface, Text } from 'react-native-paper';
 import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 
 export default class Player extends Component {
 
@@ -11,6 +12,7 @@ export default class Player extends Component {
     index: PropTypes.number.isRequired,
     showScoreInputDialog: PropTypes.func.isRequired,
     showRemovePlayerDialog: PropTypes.func.isRequired,
+    showPlayerInfoDialog: PropTypes.func.isRequired,
   };
 
   render() {
@@ -20,17 +22,32 @@ export default class Player extends Component {
       score,
       index,
       showScoreInputDialog,
-      showRemovePlayerDialog
+      showRemovePlayerDialog,
+      showPlayerInfoDialog
     } = this.props;
 
     return (
       <Surface style={styles.playerRowContent}>
-        <TouchableOpacity activeOpacity={0.9} style={styles.playerData} onPress={() => showScoreInputDialog(index, name)} >
+        <TouchableOpacity
+          activeOpacity={0.6}
+          style={styles.playerData}
+          onPress={() => showScoreInputDialog(index, name)}
+          onLongPress={() => showRemovePlayerDialog(index, name)}
+        >
           <Avatar.Icon style={styles.playerAvatar} icon="person" size={40} />
           <Text style={styles.playerTextInfo}>{name}</Text>
-          <Text style={[styles.playerTextInfo, styles.playerScore]}>{score}</Text>
+          <NumberFormat
+            value={score}
+            thousandSeparator={true}
+            displayType='text'
+            renderText={value => <Text style={[styles.playerTextInfo, styles.playerScore]}>{value}</Text>}
+          />
         </TouchableOpacity>
-        <IconButton style={styles.moreIcon} icon="more-vert" onPress={() => showRemovePlayerDialog(index, name)} />
+        <IconButton
+          style={styles.moreIcon}
+          icon="more-vert"
+          onPress={() => showPlayerInfoDialog(index, name, score)}
+        />
       </Surface>
     );
   }
