@@ -6,14 +6,6 @@ const initialState = {
         name: 'Andy',
         score: 1250
       },
-      {
-        name: 'Nicole',
-        score: 2500
-      },
-      {
-        name: 'Mela',
-        score: 3025
-      },
     ],
 }
 
