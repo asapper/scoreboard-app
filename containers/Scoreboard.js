@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -16,34 +16,31 @@ import ResetGame from '../modules/dialogs/components/ResetGame';
 import * as DialogActions from '../modules/dialogs/actions';
 
 
-class Scoreboard extends Component {
-  
-  render() {
-    const { dispatch, players } = this.props;
-    // dialog actions
-    // dialog: reset game
-    this.showResetGameDialog = bindActionCreators(DialogActions.showResetGameDialog, dispatch);
-    // dialog: new player
-    this.showNewPlayerDialog = bindActionCreators(DialogActions.showAddPlayerDialog, dispatch);
+const Scoreboard = props => {
+  const { dispatch, players } = props;
+  // dialog actions
+  // dialog: reset game
+  this.showResetGameDialog = bindActionCreators(DialogActions.showResetGameDialog, dispatch);
+  // dialog: new player
+  this.showNewPlayerDialog = bindActionCreators(DialogActions.showAddPlayerDialog, dispatch);
 
-    return (
-      <ScrollView contentContainerStyle={styles.container}>
-        {/* Appbar header */}
-        <Header />
-        {/* Player list */}
-        <PlayerList   />
-        {/* Floating action button: new player and reset game dialogs */}
-        <FloatingActionButton
-          showNewPlayerDialog={this.showNewPlayerDialog}
-          showResetGameDialog={this.showResetGameDialog}
-        />
-        {/* New Player dialog */}
-        <AddPlayerForm />
-        {/* Confirm game reset dialog */}
-        <ResetGame />
-      </ScrollView>
-    );
-  }
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* Appbar header */}
+      <Header />
+      {/* Player list */}
+      <PlayerList   />
+      {/* Floating action button: new player and reset game dialogs */}
+      <FloatingActionButton
+        showNewPlayerDialog={this.showNewPlayerDialog}
+        showResetGameDialog={this.showResetGameDialog}
+      />
+      {/* New Player dialog */}
+      <AddPlayerForm />
+      {/* Confirm game reset dialog */}
+      <ResetGame />
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { createStore } from 'redux';
@@ -7,8 +7,7 @@ import Scoreboard from './containers/Scoreboard';
 
 const store = createStore(rootReducer);
 
-export default class App extends Component {
-
+const App = () => {
   theme = {
     ...DefaultTheme,
     colors: {
@@ -17,13 +16,13 @@ export default class App extends Component {
     }
   };
 
-  render() {
-    return (
-      <ReduxProvider store={store}>
-        <PaperProvider theme={this.theme}>
-          <Scoreboard />
-        </PaperProvider>
-      </ReduxProvider>
-    );
-  }
+  return (
+    <ReduxProvider store={store}>
+      <PaperProvider theme={this.theme}>
+        <Scoreboard />
+      </PaperProvider>
+    </ReduxProvider>
+  );
 }
+
+export default App;
