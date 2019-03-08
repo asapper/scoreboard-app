@@ -4,6 +4,7 @@ import { Button, Dialog, Portal, Text } from 'react-native-paper';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 
+// selectors
 import { isRemovePlayerDialogVisible, getPlayerIndex, getName } from '../selectors';
 
 const RemovePlayer = props => {

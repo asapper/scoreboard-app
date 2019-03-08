@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 import NumberFormat from 'react-number-format';
 
+// styles
+import styles from '../styles';
+// selectors
 import { getName, getPlayerIndex, getScore, isPlayerInfoDialogVisible } from '../selectors';
 
 const PlayerInfo = props => {
@@ -71,32 +74,6 @@ PlayerInfo.propTypes = {
   showRemovePlayerDialog: PropTypes.func.isRequired,
   hidePlayerInfoDialog: PropTypes.func.isRequired,
 };
-
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center'
-  },
-  title: {
-    flex: 5,
-    padding: 20,
-    paddingLeft: 25,
-  },
-  blockIcon: {
-    flex: 1
-  },
-  content: {
-    marginTop: 25,
-    flexDirection: 'row'
-  },
-  contentHeader: {
-    fontWeight: 'bold'
-  },
-  contentText: {
-    fontSize: 20
-  }
-});
 
 const mapStateToProps = createStructuredSelector({
   dialogVisible: isPlayerInfoDialogVisible,

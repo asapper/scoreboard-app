@@ -6,6 +6,8 @@ import { Button, Dialog, Divider, Portal, TextInput, HelperText } from 'react-na
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 
+// styles
+import styles from '../styles';
 // actions
 import * as PlayerActions from '../../players/actions';
 import * as DialogActions from '../actions';
@@ -95,12 +97,6 @@ class AddPlayerForm extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  formInput: {
-    marginTop: 10
-  }
-});
 
 const mapStateToProps = createStructuredSelector({
   dialogVisible: isNewPlayerDialogVisible

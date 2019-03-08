@@ -5,6 +5,9 @@ import { Button, Dialog, Divider, Portal, TextInput } from 'react-native-paper';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 
+// styles
+import styles from '../styles';
+// selectors
 import { isScoreInputDialogVisible, getPlayerIndex, getName } from '../selectors';
 
 class ScoreInput extends Component {
@@ -66,12 +69,6 @@ class ScoreInput extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  formInput: {
-    marginTop: 10
-  }
-});
 
 const mapStateToProps = createStructuredSelector({
   dialogVisible: isScoreInputDialogVisible,
