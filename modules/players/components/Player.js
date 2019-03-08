@@ -4,7 +4,9 @@ import { Avatar, IconButton, Surface, Text } from 'react-native-paper';
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
 
+// styles
 import styles from '../styles';
+
 
 const Player = props => {
   const { 
@@ -13,7 +15,8 @@ const Player = props => {
     index,
     showScoreInputDialog,
     showRemovePlayerDialog,
-    showPlayerInfoDialog
+    showPlayerInfoDialog,
+    isHighScore
   } = props;
 
   return (
@@ -24,7 +27,7 @@ const Player = props => {
         onPress={() => showScoreInputDialog(index, name)}
         onLongPress={() => showRemovePlayerDialog(index, name)}
       >
-        <Avatar.Icon style={styles.playerAvatar} icon="person" size={40} />
+        <Avatar.Icon style={[styles.playerAvatar,isHighScore ? styles.playerAvatarHighScore : '']} icon="person" size={40} />
         <Text style={styles.playerTextInfo}>{name}</Text>
         <NumberFormat
           value={score}
@@ -49,6 +52,7 @@ Player.propTypes = {
   showScoreInputDialog: PropTypes.func.isRequired,
   showRemovePlayerDialog: PropTypes.func.isRequired,
   showPlayerInfoDialog: PropTypes.func.isRequired,
+  isHighScore: PropTypes.bool.isRequired
 };
 
 export default Player;

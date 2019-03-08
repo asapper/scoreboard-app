@@ -1,12 +1,16 @@
 import * as PlayerActionTypes from './actionTypes';
 
 const initialState = {
-    players: [
-      {
-        name: 'Andy',
-        score: 1250
-      },
-    ],
+  // keep track of players in current game
+  players: [
+    {
+      name: 'Andy',
+      score: 1250,
+      isHighScore: false
+    },
+  ],
+  // keep track of whether current game has started
+  isCurrentGameStarted: false,
 }
 
 export default function Player(state=initialState, action) {
@@ -39,7 +43,8 @@ export default function Player(state=initialState, action) {
       });
       return {
         ...state,
-        players: updatedPlayerList
+        players: updatedPlayerList,
+        isCurrentGameStarted: true
       }
     }
     // handle resetting current game

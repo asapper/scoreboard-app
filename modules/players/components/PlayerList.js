@@ -15,11 +15,11 @@ import ScoreInput from '../../dialogs/components/ScoreInput';
 import * as DialogActions from '../../dialogs/actions';
 import * as PlayerActions from '../actions';
 // selectors
-import { getAllPlayers } from '../selectors';
+import { getAllPlayers, getHighScore, isCurrentGameStarted } from '../selectors';
 
 
 const PlayerList = props => {
-  const { dispatch, players } = props;
+  const { dispatch, players, isCurrentGameStarted, highScore } = props;
 
   // dialog actions
   // dialog: score input
@@ -48,6 +48,7 @@ const PlayerList = props => {
           showScoreInputDialog={this.showScoreInputDialog}
           showRemovePlayerDialog={this.showRemovePlayerDialog}
           showPlayerInfoDialog={this.showPlayerInfoDialog}
+          isHighScore={isCurrentGameStarted && highScore === player.score}
         />
       )}
       {/* Player info dialog */}
@@ -76,6 +77,8 @@ PlayerList.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   players: getAllPlayers,
+  isCurrentGameStarted,
+  highScore: getHighScore
 });
 
 export default connect(mapStateToProps)(PlayerList);

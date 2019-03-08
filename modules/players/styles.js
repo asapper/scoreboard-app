@@ -20,7 +20,10 @@ export default StyleSheet.create({
   playerAvatar: {
     flex: 1,
     marginRight: 10,
-    backgroundColor: 'steelblue'
+    backgroundColor: 'lightgrey'
+  },
+  playerAvatarHighScore: {
+    backgroundColor: 'gold'
   },
   playerTextInfo: {
     flex: 3,
