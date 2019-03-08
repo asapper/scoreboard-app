@@ -20,14 +20,14 @@ const Player = props => {
   } = props;
 
   return (
-    <Surface style={styles.playerRowContent}>
+    <Surface style={[styles.playerRowContent, isHighScore ? styles.playerRowContentHighScore : '']}>
       <TouchableOpacity
         activeOpacity={0.6}
         style={styles.playerData}
         onPress={() => showScoreInputDialog(index, name)}
         onLongPress={() => showRemovePlayerDialog(index, name)}
       >
-        <Avatar.Icon style={[styles.playerAvatar,isHighScore ? styles.playerAvatarHighScore : '']} icon="person" size={40} />
+        <Avatar.Icon style={[styles.playerAvatar, isHighScore ? styles.playerAvatarHighScore : '']} icon="person" size={40} />
         <Text style={styles.playerTextInfo}>{name}</Text>
         <NumberFormat
           value={score}

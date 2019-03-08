@@ -17,6 +17,10 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
+  playerRowContentHighScore: {
+    borderWidth: 2,
+    borderColor: 'gold'
+  },
   playerData: {
     flex: 9,
     flexDirection: 'row',
