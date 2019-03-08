@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -25,7 +25,7 @@ const Scoreboard = props => {
   this.showNewPlayerDialog = bindActionCreators(DialogActions.showAddPlayerDialog, dispatch);
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View contentContainerStyle={styles.container}>
       {/* Appbar header */}
       <Header />
       {/* Player list */}
@@ -39,7 +39,7 @@ const Scoreboard = props => {
       <AddPlayerForm />
       {/* Confirm game reset dialog */}
       <ResetGame />
-    </ScrollView>
+    </View>
   );
 }
 

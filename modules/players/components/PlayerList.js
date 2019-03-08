@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
@@ -37,7 +37,7 @@ const PlayerList = props => {
   this.removePlayer = bindActionCreators(PlayerActions.removePlayer, dispatch);
 
   return (
-    <View>
+    <ScrollView>
       {/* Player data */}
       {players.map( (player, index) =>
         <Player
@@ -67,7 +67,7 @@ const PlayerList = props => {
         hideDialog={this.hideRemovePlayerDialog}
         hidePlayerInfoDialog={this.hidePlayerInfoDialog}
       />
-    </View>
+    </ScrollView>
   );
 }
 

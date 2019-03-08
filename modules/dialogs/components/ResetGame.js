@@ -12,18 +12,18 @@ import * as PlayerActions from '../../players/actions';
 import { isResetGameDialogVisible } from '../selectors';
 
 const ResetGame = props => {
-  handleResetGame = () => {
-    this.resetGame();
-    this.hideDialog();
-  }
-
   const { dispatch, dialogVisible } = props;
-
+  
   // dialog actions
   // dialog: reset game
   this.hideDialog = bindActionCreators(DialogActions.hideResetGameDialog, dispatch);
   // player actions
   this.resetGame = bindActionCreators(PlayerActions.resetGame, dispatch);
+  
+  handleResetGame = () => {
+    this.resetGame();
+    this.hideDialog();
+  }
 
   return (
     <Portal>

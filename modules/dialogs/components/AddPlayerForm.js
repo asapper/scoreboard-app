@@ -15,44 +15,74 @@ import * as DialogActions from '../actions';
 import { isNewPlayerDialogVisible } from '../selectors';
 
 class AddPlayerForm extends Component {
-  state = {
+  // store initial state
+  initialState = {
     nameInput: '',
     scoreInput: 0,
     nameInputError: false
-  }
-
+  };
+  
+  // init state
+  state = this.initialState;
+  
+  // verify all necessary props are passed in
   static propTypes = {
     dialogVisible: PropTypes.bool.isRequired,
   }
+  
+  /**
+   * Restore state to its initial state.
+   */
+  resetState = () => {
+    this.setState(this.initialState);
+  }
 
+  /**
+   * Verify name input is valid.
+   */
   isNameInputValid = () => {
     return this.state.nameInput.length > 0;
   }
 
+  /**
+   * Handle the adding of a player with input data.
+   */
   handleAddNewPlayer = () => {
+    // player actions
+    addNewPlayer = bindActionCreators(PlayerActions.addPlayer, this.props.dispatch);
+    
     // verify name is not empty
     if (this.isNameInputValid()) {
       // add new player
-      this.addNewPlayer(this.state.nameInput, this.state.scoreInput);
-      this.hideDialog();
+      addNewPlayer(this.state.nameInput, this.state.scoreInput);
+      this.handleHideDialog();
     } else {
       this.setState({ nameInputError: true });
     }
   }
 
-  render() {
-    const { dispatch, dialogVisible } = this.props;
-
-    // player actions
-    this.addNewPlayer = bindActionCreators(PlayerActions.addPlayer, dispatch);
+  /**
+   * Handle hiding the dialog.
+   */
+  handleHideDialog = () => {
     // dialog: new player
-    this.hideDialog = bindActionCreators(DialogActions.hideAddPlayerDialog, dispatch);
+    hideDialog = bindActionCreators(DialogActions.hideAddPlayerDialog, this.props.dispatch);
+
+    this.resetState();
+    hideDialog();
+  }
+  
+  /**
+   * Return view for component.
+   */
+  render() {
+    const { dialogVisible } = this.props;
 
     return (
       <Portal>
         <Dialog
           visible={dialogVisible}
-          onDismiss={this.hideDialog}
+          onDismiss={this.handleHideDialog}
         >
         {/* New Player dialog: title */}
         <Dialog.Title>New Player</Dialog.Title>
@@ -90,7 +120,7 @@ class AddPlayerForm extends Component {
         {/* New Player dialog: action buttons */}
         <Dialog.Actions>
           <Button onPress={this.handleAddNewPlayer}>Add</Button>
-          <Button onPress={this.hideDialog}>Cancel</Button>
+          <Button onPress={this.handleHideDialog}>Cancel</Button>
         </Dialog.Actions>
         </Dialog>
       </Portal>
@@ -98,6 +128,9 @@ class AddPlayerForm extends Component {
   }
 }
 
+/**
+ * Create a selector for all properties obtained from state.
+ */
 const mapStateToProps = createStructuredSelector({
   dialogVisible: isNewPlayerDialogVisible
 });
