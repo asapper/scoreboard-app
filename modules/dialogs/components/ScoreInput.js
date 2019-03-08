@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
-import { Button, Dialog, Divider, Portal, TextInput } from 'react-native-paper';
+import { Button, Dialog, HelperText, Portal, TextInput } from 'react-native-paper';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 
@@ -13,7 +13,8 @@ import { isScoreInputDialogVisible, getPlayerIndex, getName } from '../selectors
 class ScoreInput extends Component {
   // store initial state
   initialState = {
-    score: 0
+    score: 0,
+    scoreInputError: false
   }
   // init state
   state = this.initialState;
@@ -39,9 +40,14 @@ class ScoreInput extends Component {
    */
   handleAddScore = () => {
     const { playerIndex, addScoreToPlayer, hideDialog } = this.props;
-    // add score
-    addScoreToPlayer(playerIndex, this.state.score);
-    this.handleHideDialog();
+    // verifiy score input is valid
+    if (this.state.score > 0) {
+      // add score
+      addScoreToPlayer(playerIndex, this.state.score);
+      this.handleHideDialog();
+    } else {
+      this.setState({ scoreInputError: true });
+    }
   }
 
   handleHideDialog = () => {
@@ -66,20 +72,25 @@ class ScoreInput extends Component {
         >
           {/* Score input dialog: title */}
           <Dialog.Title>Add score to {name}</Dialog.Title>
-          <Divider />
           {/* Score input dialog: body */}
           <Dialog.Content>
-            {/* Input: score */}
-            <TextInput
-              label='Score for this round'
-              placeholder="Leave empty for score of 0"
-              selectionColor='#4e91fc'
-              underlineColor='#4e91fc'
-              style={styles.formInput}
-              onChangeText={(score) => this.setState({ score })}
-              onSubmitEditing={this.handleAddScore}
-              keyboardType='number-pad'
-            />
+            <View>
+              {/* Input: score */}
+              <TextInput
+                label='Score for this round'
+                placeholder='Score for this round'
+                selectionColor='#4e91fc'
+                underlineColor='#4e91fc'
+                style={styles.formInput}
+                onChangeText={(score) => this.setState({ score })}
+                onSubmitEditing={this.handleAddScore}
+                keyboardType='number-pad'
+                error={this.state.scoreInputError}
+              />
+              <HelperText type="error" visible={this.state.scoreInputError}>
+                Error: score input has to be greater than 0
+              </HelperText>
+            </View>
           </Dialog.Content>
           {/* Score input dialog: action buttons */}
           <Dialog.Actions>

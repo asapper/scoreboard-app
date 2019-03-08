@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, Dialog, Divider, Portal, TextInput, HelperText } from 'react-native-paper';
+import { Button, Dialog, Portal, TextInput, HelperText } from 'react-native-paper';
 import PropTypes from 'prop-types';
 import { createStructuredSelector } from 'reselect';
 
@@ -18,7 +18,6 @@ class AddPlayerForm extends Component {
   // store initial state
   initialState = {
     nameInput: '',
-    scoreInput: 0,
     nameInputError: false
   };
   
@@ -54,7 +53,7 @@ class AddPlayerForm extends Component {
     // verify name is not empty
     if (this.isNameInputValid()) {
       // add new player
-      addNewPlayer(this.state.nameInput, this.state.scoreInput);
+      addNewPlayer(this.state.nameInput);
       this.handleHideDialog();
     } else {
       this.setState({ nameInputError: true });
@@ -86,7 +85,6 @@ class AddPlayerForm extends Component {
         >
         {/* New Player dialog: title */}
         <Dialog.Title>New Player</Dialog.Title>
-        <Divider />
         {/* New Player dialog: body */}
         <Dialog.Content>
           <View>
@@ -105,17 +103,6 @@ class AddPlayerForm extends Component {
               Error: empty name not allowed
             </HelperText>
           </View>
-          {/* Input: player initial score */}
-          <TextInput
-            label='Initial score'
-            placeholder="Leave empty for initial score of 0"
-            selectionColor='#4e91fc'
-            underlineColor='#4e91fc'
-            style={styles.formInput}
-            onChangeText={(scoreInput) => this.setState({ scoreInput })}
-            onSubmitEditing={this.handleAddNewPlayer}
-            keyboardType='number-pad'
-          />
         </Dialog.Content>
         {/* New Player dialog: action buttons */}
         <Dialog.Actions>

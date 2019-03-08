@@ -25,7 +25,7 @@ const Scoreboard = props => {
   this.showNewPlayerDialog = bindActionCreators(DialogActions.showAddPlayerDialog, dispatch);
 
   return (
-    <View contentContainerStyle={styles.container}>
+    <View style={styles.container}>
       {/* Appbar header */}
       <Header />
       {/* Player list */}
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#efefef',
+    backgroundColor: '#fafafa',
     justifyContent: 'flex-start',
     alignItems: 'stretch',
   },

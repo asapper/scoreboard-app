@@ -25,7 +25,8 @@ export default function Player(state=initialState, action) {
           // add new player
           {
             name: action.name,
-            score: parseInt(action.score)
+            score: 0,
+            isHighScore: false,
           }
         ]
       };

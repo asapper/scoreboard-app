@@ -16,6 +16,8 @@ import * as DialogActions from '../../dialogs/actions';
 import * as PlayerActions from '../actions';
 // selectors
 import { getAllPlayers, getHighScore, isCurrentGameStarted } from '../selectors';
+// styles
+import styles from '../styles';
 
 
 const PlayerList = props => {
@@ -37,7 +39,7 @@ const PlayerList = props => {
   this.removePlayer = bindActionCreators(PlayerActions.removePlayer, dispatch);
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={styles.playerListContainer}>
       {/* Player data */}
       {players.map( (player, index) =>
         <Player

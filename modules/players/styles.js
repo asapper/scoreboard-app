@@ -1,9 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  playerListContainer: {
+    marginTop: 10,
+    paddingBottom: 50
+  },  
   playerRowContent: {
-    marginTop: 20,
-    marginBottom: 0,
+    marginTop: 10,
+    marginBottom: 10,
     marginLeft: 15,
     marginRight: 15,
     padding: 15,
