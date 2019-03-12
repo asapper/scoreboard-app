@@ -31,7 +31,7 @@ const PlayerInfo = props => {
         <View style={styles.header}>
           <Title style={styles.title}>Player Info</Title>
           <IconButton 
-            icon="block"
+            icon="delete"
             color={Colors.red500}
             size={20}
             style={styles.blockIcon}

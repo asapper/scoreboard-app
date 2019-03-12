@@ -1,18 +1,29 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { Appbar } from 'react-native-paper';
 
+// dialog components
+import SortMenu from '../../dialogs/components/SortMenu';
+
 const Header = props => {
+  const { title, showSortMenu } = props;
+
   return (
-    <Appbar.Header>
-      <Appbar.Content title={props.title} titleStyle={styles.title} />
-    </Appbar.Header>
+    <View>
+      <Appbar.Header>
+        <Appbar.Content title={title} titleStyle={styles.title} />
+        <Appbar.Action icon="sort" color='white' onPress={showSortMenu} />
+      </Appbar.Header>
+
+      <SortMenu />
+    </View>
   );
 }
 
 Header.propTypes = {
-  title: PropTypes.string
+  title: PropTypes.string,
+  showSortMenu: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {
@@ -22,7 +33,7 @@ Header.defaultProps = {
 const styles = StyleSheet.create({
   title: {
     fontSize: 30,
-    color: '#fff'
+    color: 'white'
   }
 });
 

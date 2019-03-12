@@ -14,6 +14,8 @@ const initialState = {
   // player info dialog
   playerInfoDialogVisible: false,
   currentScore: 0,
+  // sort menu dialog
+  sortMenuDialogVisible: false,
 };
 
 export default function Dialogs(state=initialState, action) {
@@ -96,6 +98,21 @@ export default function Dialogs(state=initialState, action) {
       return {
         ...state,
         playerInfoDialogVisible: false
+      }
+    }
+
+    // Sort Menu reducers
+    case DialogActionTypes.SHOW_SORT_MENU_DIALOG: {
+      return {
+        ...state,
+        sortMenuDialogVisible: true,
+      }
+    }
+
+    case DialogActionTypes.HIDE_SORT_MENU_DIALOG: {
+      return {
+        ...state,
+        sortMenuDialogVisible: false,
       }
     }
 

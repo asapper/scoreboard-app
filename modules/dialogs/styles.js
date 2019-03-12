@@ -14,6 +14,23 @@ export default StyleSheet.create({
     padding: 20,
     paddingLeft: 25,
   },
+  heading: {
+    paddingTop: '8%',
+    paddingBottom: '8%',
+    fontWeight: 'bold',
+    fontSize: 16
+  },
+  radioButtonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: '1%',
+    paddingHorizontal: '5%',
+  },
+  radioButtonText: {
+    flex: 3,
+    fontSize: 16
+  },
   blockIcon: {
     flex: 1
   },

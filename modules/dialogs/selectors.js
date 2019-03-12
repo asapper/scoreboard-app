@@ -8,3 +8,4 @@ export const isNewPlayerDialogVisible = state => state[NAME].newPlayerDialogVisi
 export const isResetGameDialogVisible = state => state[NAME].resetGameDialogVisible;
 export const isRemovePlayerDialogVisible = state => state[NAME].removePlayerDialogVisible;
 export const isPlayerInfoDialogVisible = state => state[NAME].playerInfoDialogVisible;
+export const isSortMenuDialogVisible = state => state[NAME].sortMenuDialogVisible;

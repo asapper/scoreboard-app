@@ -1,8 +1,10 @@
 // add player
-export const ADD_PLAYER = 'player/ADD_PLAYER';
+export const ADD_PLAYER = 'players/ADD_PLAYER';
 // add score
-export const ADD_SCORE_TO_PLAYER = 'player/ADD_SCORE_TO_PLAYER';
+export const ADD_SCORE_TO_PLAYER = 'players/ADD_SCORE_TO_PLAYER';
 // reset game
-export const RESET_GAME = 'player/RESET_GAME';
+export const RESET_GAME = 'players/RESET_GAME';
 // remove player
-export const REMOVE_PLAYER = 'player/REMOVE_PLAYER';
+export const REMOVE_PLAYER = 'players/REMOVE_PLAYER';
+// sort players
+export const SORT_PLAYERS = 'players/SORT_PLAYERS';

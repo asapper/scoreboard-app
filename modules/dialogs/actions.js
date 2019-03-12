@@ -81,3 +81,18 @@ export const hidePlayerInfoDialog = () => {
     type: DialogActionTypes.HIDE_PLAYER_INFO_DIALOG
   }
 }
+
+/**
+ * Sort menu actions
+ */
+export const showSortMenuDialog = () => {
+  return {
+    type: DialogActionTypes.SHOW_SORT_MENU_DIALOG
+  }
+}
+
+export const hideSortMenuDialog = () => {
+  return {
+    type: DialogActionTypes.HIDE_SORT_MENU_DIALOG
+  }
+}

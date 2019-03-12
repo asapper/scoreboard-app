@@ -17,3 +17,7 @@ export const HIDE_REMOVE_PLAYER_DIALOG = 'dialogs/HIDE_REMOVE_PLAYER_DIALOG';
 // Player Info dialog
 export const SHOW_PLAYER_INFO_DIALOG = 'dialogs/SHOW_PLAYER_INFO_DIALOG';
 export const HIDE_PLAYER_INFO_DIALOG = 'dialogs/HIDE_PLAYER_INFO_DIALOG';
+
+// Sort Menu dialog
+export const SHOW_SORT_MENU_DIALOG = 'dialogs/SHOW_SORT_MENU_DIALOG';
+export const HIDE_SORT_MENU_DIALOG = 'dialogs/HIDE_SORT_MENU_DIALOG';

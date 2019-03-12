@@ -1,4 +1,5 @@
 import * as PlayerActionTypes from './actionTypes';
+import * as constants from './constants';
 
 const initialState = {
   // keep track of players in current game
@@ -6,7 +7,8 @@ const initialState = {
     {
       name: 'Andy',
       score: 1250,
-      isHighScore: false
+      isHighScore: false,
+      dateAdded: new Date()
     },
   ],
   // keep track of whether current game has started
@@ -27,6 +29,7 @@ export default function Player(state=initialState, action) {
             name: action.name,
             score: 0,
             isHighScore: false,
+            dateAdded: new Date(),
           }
         ]
       };
@@ -66,6 +69,29 @@ export default function Player(state=initialState, action) {
         ...state,
         players: removePlayerList
       };
+    }
+
+    // handle sorting players
+    case PlayerActionTypes.SORT_PLAYERS: {
+      const sortedPlayers = state.players.slice();
+      switch (action.filter) {
+        case constants.FILTER_BY_INITIAL: {
+          sortedPlayers.sort((a, b) => a.dateAdded - b.dateAdded);
+          break;
+        }
+        case constants.FILTER_BY_NAME: {
+          sortedPlayers.sort((a, b) => a.name.localeCompare(b.name));
+          break;
+        }
+        case constants.FILTER_BY_SCORE: {
+          sortedPlayers.sort((a, b) => b.score - a.score);
+          break;
+        }
+      }
+      return {
+        ...state,
+        players: sortedPlayers
+      }
     }
     
     default:

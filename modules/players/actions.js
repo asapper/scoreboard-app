@@ -31,3 +31,11 @@ export const removePlayer = index => {
     index
   }
 }
+
+// sort players
+export const sortPlayers = filter => {
+  return {
+    type: PlayerActionTypes.SORT_PLAYERS,
+    filter
+  }
+}

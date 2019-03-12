@@ -23,11 +23,13 @@ const Scoreboard = props => {
   this.showResetGameDialog = bindActionCreators(DialogActions.showResetGameDialog, dispatch);
   // dialog: new player
   this.showNewPlayerDialog = bindActionCreators(DialogActions.showAddPlayerDialog, dispatch);
+  // dialog: sort menu
+  this.showSortMenuDialog = bindActionCreators(DialogActions.showSortMenuDialog, dispatch);
 
   return (
     <View style={styles.container}>
       {/* Appbar header */}
-      <Header />
+      <Header showSortMenu={this.showSortMenuDialog} />
       {/* Player list */}
       <PlayerList   />
       {/* Floating action button: new player and reset game dialogs */}
