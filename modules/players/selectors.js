@@ -8,7 +8,7 @@ export const isCurrentGameStarted = state => state[NAME].isCurrentGameStarted;
 export const getHighScore = createSelector(
   [getAllPlayers],
   (players) => {
-    const scores = players.map(p => p.score);
+    const scores = players.map(p => p.totalScore);
     const highScore = Math.max(...scores);
     if (highScore) {
       return highScore;

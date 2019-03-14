@@ -45,12 +45,13 @@ const PlayerList = props => {
         <Player
           key={index}
           index={index}
-          score={player.score}
+          score={player.totalScore}
+          roundScores={player.roundScores}
           name={player.name}
           showScoreInputDialog={this.showScoreInputDialog}
           showRemovePlayerDialog={this.showRemovePlayerDialog}
           showPlayerInfoDialog={this.showPlayerInfoDialog}
-          isHighScore={isCurrentGameStarted && highScore === player.score}
+          isHighScore={isCurrentGameStarted && highScore === player.totalScore}
         />
       )}
       {/* Player info dialog */}

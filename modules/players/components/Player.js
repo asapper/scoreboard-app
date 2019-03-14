@@ -12,6 +12,7 @@ const Player = props => {
   const { 
     name,
     score,
+    roundScores,
     index,
     showScoreInputDialog,
     showRemovePlayerDialog,
@@ -39,7 +40,7 @@ const Player = props => {
       <IconButton
         style={styles.moreIcon}
         icon="more-vert"
-        onPress={() => showPlayerInfoDialog(index, name, score)}
+        onPress={() => showPlayerInfoDialog(index, name, score, roundScores)}
       />
     </Surface>
   );
@@ -48,6 +49,7 @@ const Player = props => {
 Player.propTypes = {
   name: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
+  roundScores: PropTypes.array.isRequired,
   index: PropTypes.number.isRequired,
   showScoreInputDialog: PropTypes.func.isRequired,
   showRemovePlayerDialog: PropTypes.func.isRequired,

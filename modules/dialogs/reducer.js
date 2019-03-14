@@ -14,6 +14,7 @@ const initialState = {
   // player info dialog
   playerInfoDialogVisible: false,
   currentScore: 0,
+  roundScores: [],
   // sort menu dialog
   sortMenuDialogVisible: false,
 };
@@ -90,7 +91,8 @@ export default function Dialogs(state=initialState, action) {
         playerInfoDialogVisible: true,
         playerIndex: action.playerIndex,
         name: action.name,
-        currentScore: action.score
+        currentScore: action.score,
+        roundScores: action.roundScores
       }
     }
 

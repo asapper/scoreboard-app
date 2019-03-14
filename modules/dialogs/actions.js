@@ -67,12 +67,13 @@ export const hideRemovePlayerDialog = () => {
 /**
  * Player info actions
  */
-export const showPlayerInfoDialog = (playerIndex, name, score) => {
+export const showPlayerInfoDialog = (playerIndex, name, score, roundScores) => {
   return {
     type: DialogActionTypes.SHOW_PLAYER_INFO_DIALOG,
     playerIndex,
     name,
-    score
+    score,
+    roundScores
   }
 }
 
