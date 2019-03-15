@@ -16,7 +16,7 @@ const initialState = {
   currentScore: 0,
   roundScores: [],
   // sort menu dialog
-  sortMenuDialogVisible: false,
+  settingsMenuDialogVisible: false,
 };
 
 export default function Dialogs(state=initialState, action) {
@@ -107,14 +107,14 @@ export default function Dialogs(state=initialState, action) {
     case DialogActionTypes.SHOW_SORT_MENU_DIALOG: {
       return {
         ...state,
-        sortMenuDialogVisible: true,
+        settingsMenuDialogVisible: true,
       }
     }
 
     case DialogActionTypes.HIDE_SORT_MENU_DIALOG: {
       return {
         ...state,
-        sortMenuDialogVisible: false,
+        settingsMenuDialogVisible: false,
       }
     }
 

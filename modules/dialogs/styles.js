@@ -22,14 +22,13 @@ export default StyleSheet.create({
   },
   radioButtonRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     paddingVertical: '1%',
-    paddingHorizontal: '5%',
   },
-  radioButtonText: {
-    flex: 3,
-    fontSize: 16
+  radioButton: {
+    marginHorizontal: '2%',
+    fontSize: 14
   },
   blockIcon: {
     flex: 1

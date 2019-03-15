@@ -3,7 +3,7 @@ import RemovePlayer from './RemovePlayer';
 import ResetGame from './ResetGame';
 import ScoreInput from './ScoreInput';
 import PlayerInfo from './PlayerInfo';
-import SortMenu from './SortMenu';
+import SettingsMenu from './SettingsMenu';
 
 export default {
   AddPlayerForm,
@@ -11,5 +11,5 @@ export default {
   ResetGame,
   ScoreInput,
   PlayerInfo,
-  SortMenu
+  SettingsMenu
 };

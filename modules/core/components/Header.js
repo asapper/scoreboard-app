@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Appbar } from 'react-native-paper';
 
 // dialog components
-import SortMenu from '../../dialogs/components/SortMenu';
+import SettingsMenu from '../../dialogs/components/SettingsMenu';
 
 const Header = props => {
   const { title, showSortMenu } = props;
@@ -16,7 +16,7 @@ const Header = props => {
         <Appbar.Action icon="sort" color='white' onPress={showSortMenu} />
       </Appbar.Header>
 
-      <SortMenu />
+      <SettingsMenu />
     </View>
   );
 }
