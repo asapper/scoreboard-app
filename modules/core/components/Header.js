@@ -7,23 +7,26 @@ import { Appbar } from 'react-native-paper';
 import SettingsMenu from '../../dialogs/components/SettingsMenu';
 
 const Header = props => {
-  const { title, showSortMenu } = props;
+  const { title, showSortMenu, showNewPlayerDialog, showResetGameDialog } = props;
 
   return (
     <View>
       <Appbar.Header>
         <Appbar.Content title={title} titleStyle={styles.title} />
         <Appbar.Action icon="sort" color='white' onPress={showSortMenu} />
+        <Appbar.Action icon="add" color='white' onPress={showNewPlayerDialog} />
       </Appbar.Header>
 
-      <SettingsMenu />
+      <SettingsMenu showResetGameDialog={showResetGameDialog} />
     </View>
   );
 }
 
 Header.propTypes = {
   title: PropTypes.string,
-  showSortMenu: PropTypes.func.isRequired
+  showSortMenu: PropTypes.func.isRequired,
+  showNewPlayerDialog: PropTypes.func.isRequired,
+  showResetGameDialog: PropTypes.func.isRequired
 };
 
 Header.defaultProps = {

@@ -23,7 +23,8 @@ class SettingsMenu extends Component {
   }
 
   static propTypes = {
-    dialogVisible: PropTypes.bool.isRequired
+    dialogVisible: PropTypes.bool.isRequired,
+    showResetGameDialog: PropTypes.func.isRequired
   }
 
   handleRadioButtonPress = value => {
@@ -32,7 +33,7 @@ class SettingsMenu extends Component {
   }
 
   render() {
-    const { dispatch, dialogVisible } = this.props;
+    const { dispatch, dialogVisible, showResetGameDialog } = this.props;
     
     // dialog actions
     // dialog: sort menu
@@ -51,6 +52,7 @@ class SettingsMenu extends Component {
           <Divider />
           {/* Sort menu dialog: body */}
           <Dialog.Content>
+
             {/* Sort by settings */}
             <View>
               {/* Heading */}
@@ -89,6 +91,25 @@ class SettingsMenu extends Component {
                 </Button>
               </View>
             </View>
+
+            {/* Settings: reset game */}
+            <View>
+              {/* Heading */}
+              <Text style={styles.heading}>
+                Reset
+              </Text>
+              <View style={styles.radioButtonRow}>
+                <Button
+                    compact={true}
+                    uppercase={false}
+                    style={styles.radioButton}
+                    onPress={showResetGameDialog}
+                  >
+                  Reset game
+                </Button>
+              </View>
+            </View>
+
           </Dialog.Content>
           {/* Sort menu dialog: action buttons */}
           <Dialog.Actions>

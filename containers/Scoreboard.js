@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 // core components
 import Header from '../modules/core/components/Header';
-import FloatingActionButton from '../modules/core/components/FloatingActionButton';
+import Messages from '../modules/dialogs/components/Messages';
 // player list component
 import PlayerList from '../modules/players/components/PlayerList';
 // dialog components
@@ -26,21 +26,25 @@ const Scoreboard = props => {
   // dialog: sort menu
   this.showSortMenuDialog = bindActionCreators(DialogActions.showSortMenuDialog, dispatch);
 
+  // message snackbar action
+  this.showMessage = bindActionCreators(DialogActions.showMessagesSnackbar, dispatch);
+
   return (
     <View style={styles.container}>
       {/* Appbar header */}
-      <Header showSortMenu={this.showSortMenuDialog} />
-      {/* Player list */}
-      <PlayerList   />
-      {/* Floating action button: new player and reset game dialogs */}
-      <FloatingActionButton
+      <Header
+        showSortMenu={this.showSortMenuDialog}
         showNewPlayerDialog={this.showNewPlayerDialog}
         showResetGameDialog={this.showResetGameDialog}
       />
+      {/* Player list */}
+      <PlayerList showMessage={this.showMessage} />
       {/* New Player dialog */}
-      <AddPlayerForm />
+      <AddPlayerForm showMessage={this.showMessage} />
       {/* Confirm game reset dialog */}
-      <ResetGame />
+      <ResetGame showMessage={this.showMessage} />
+
+      <Messages  />
     </View>
   );
 }

@@ -97,3 +97,19 @@ export const hideSortMenuDialog = () => {
     type: DialogActionTypes.HIDE_SORT_MENU_DIALOG
   }
 }
+
+/**
+ * Messages snackbar actions
+ */
+export const showMessagesSnackbar = message => {
+  return {
+    type: DialogActionTypes.SHOW_MESSAGE_SNACKBAR,
+    message
+  }
+}
+
+export const hideMessagesSnackbar = () => {
+  return {
+    type: DialogActionTypes.HIDE_MESSAGE_SNACKBAR
+  }
+}

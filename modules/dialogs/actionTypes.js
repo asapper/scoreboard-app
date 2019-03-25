@@ -21,3 +21,7 @@ export const HIDE_PLAYER_INFO_DIALOG = 'dialogs/HIDE_PLAYER_INFO_DIALOG';
 // Sort Menu dialog
 export const SHOW_SORT_MENU_DIALOG = 'dialogs/SHOW_SORT_MENU_DIALOG';
 export const HIDE_SORT_MENU_DIALOG = 'dialogs/HIDE_SORT_MENU_DIALOG';
+
+// Messages
+export const SHOW_MESSAGE_SNACKBAR = 'dialogs/SHOW_MESSAGE_SNACKBAR';
+export const HIDE_MESSAGE_SNACKBAR = 'dialogs/HIDE_MESSAGE_SNACKBAR';

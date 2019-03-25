@@ -17,6 +17,9 @@ const initialState = {
   roundScores: [],
   // sort menu dialog
   settingsMenuDialogVisible: false,
+  // messages snackbar
+  messagesSnackbarMsg: '',
+  messagesSnackbarVisible: false,
 };
 
 export default function Dialogs(state=initialState, action) {
@@ -115,6 +118,22 @@ export default function Dialogs(state=initialState, action) {
       return {
         ...state,
         settingsMenuDialogVisible: false,
+      }
+    }
+
+    // Message snackbar reducers
+    case DialogActionTypes.SHOW_MESSAGE_SNACKBAR: {
+      return {
+        ...state,
+        messagesSnackbarVisible: true,
+        messagesSnackbarMsg: action.message
+      }
+    }
+
+    case DialogActionTypes.HIDE_MESSAGE_SNACKBAR: {
+      return {
+        ...state,
+        messagesSnackbarVisible: false,
       }
     }
 
