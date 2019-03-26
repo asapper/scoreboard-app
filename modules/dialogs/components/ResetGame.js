@@ -17,12 +17,19 @@ const ResetGame = props => {
   // dialog actions
   // dialog: reset game
   this.hideDialog = bindActionCreators(DialogActions.hideResetGameDialog, dispatch);
+  // dialog: settings menu
+  this.hideSettingsDialog = bindActionCreators(DialogActions.hideSettingsMenuDialog, dispatch);
   // player actions
   this.resetGame = bindActionCreators(PlayerActions.resetGame, dispatch);
   
   handleResetGame = () => {
+    // reset main game
     this.resetGame();
+    // hide current confirmation dialog
     this.hideDialog();
+    // hide parent dialog
+    this.hideSettingsDialog();
+    props.showMessage('Game was reset successfully!');
   }
 
   return (
@@ -52,7 +59,8 @@ const ResetGame = props => {
 }
 
 ResetGame.propTypes = {
-  dialogVisible: PropTypes.bool.isRequired
+  dialogVisible: PropTypes.bool.isRequired,
+  showMessage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

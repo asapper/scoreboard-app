@@ -24,7 +24,7 @@ const Scoreboard = props => {
   // dialog: new player
   this.showNewPlayerDialog = bindActionCreators(DialogActions.showAddPlayerDialog, dispatch);
   // dialog: sort menu
-  this.showSortMenuDialog = bindActionCreators(DialogActions.showSortMenuDialog, dispatch);
+  this.showSortMenuDialog = bindActionCreators(DialogActions.showSettingsMenuDialog, dispatch);
 
   // message snackbar action
   this.showMessage = bindActionCreators(DialogActions.showMessagesSnackbar, dispatch);

@@ -84,17 +84,17 @@ export const hidePlayerInfoDialog = () => {
 }
 
 /**
- * Sort menu actions
+ * Settings menu actions
  */
-export const showSortMenuDialog = () => {
+export const showSettingsMenuDialog = () => {
   return {
-    type: DialogActionTypes.SHOW_SORT_MENU_DIALOG
+    type: DialogActionTypes.SHOW_SETTINGS_MENU_DIALOG
   }
 }
 
-export const hideSortMenuDialog = () => {
+export const hideSettingsMenuDialog = () => {
   return {
-    type: DialogActionTypes.HIDE_SORT_MENU_DIALOG
+    type: DialogActionTypes.HIDE_SETTINGS_MENU_DIALOG
   }
 }
 

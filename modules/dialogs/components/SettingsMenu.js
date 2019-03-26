@@ -37,7 +37,7 @@ class SettingsMenu extends Component {
     
     // dialog actions
     // dialog: sort menu
-    this.hideDialog = bindActionCreators(DialogActions.hideSortMenuDialog, dispatch);
+    this.hideDialog = bindActionCreators(DialogActions.hideSettingsMenuDialog, dispatch);
     // players: sort list
     this.sortPlayers = bindActionCreators(PlayerActions.sortPlayers, dispatch);
 

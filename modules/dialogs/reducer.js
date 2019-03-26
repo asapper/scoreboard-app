@@ -106,15 +106,15 @@ export default function Dialogs(state=initialState, action) {
       }
     }
 
-    // Sort Menu reducers
-    case DialogActionTypes.SHOW_SORT_MENU_DIALOG: {
+    // Settings Menu reducers
+    case DialogActionTypes.SHOW_SETTINGS_MENU_DIALOG: {
       return {
         ...state,
         settingsMenuDialogVisible: true,
       }
     }
 
-    case DialogActionTypes.HIDE_SORT_MENU_DIALOG: {
+    case DialogActionTypes.HIDE_SETTINGS_MENU_DIALOG: {
       return {
         ...state,
         settingsMenuDialogVisible: false,

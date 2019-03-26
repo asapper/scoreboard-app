@@ -13,6 +13,6 @@ export const getHighScore = createSelector(
     if (highScore) {
       return highScore;
     }
-    return null;
+    return 0;
   }
 );
