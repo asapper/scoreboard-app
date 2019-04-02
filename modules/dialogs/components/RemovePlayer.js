@@ -9,16 +9,14 @@ import { isRemovePlayerDialogVisible, getPlayerIndex, getName } from '../selecto
 
 const RemovePlayer = props => {
   handleRemovePlayer = () => {
-    const { name, playerIndex, removePlayer, hideDialog, hidePlayerInfoDialog, showMessage } = props;
+    const { name, playerIndex, removePlayer, hideDialog, hidePlayerInfoDialog } = props;
 
     // remove player at given index
-    removePlayer(playerIndex);
+    removePlayer(playerIndex, name);
     // hide current remove-player dialog
     hideDialog();
     // hide parent dialog
     hidePlayerInfoDialog();
-    // display success message
-    showMessage('Removed ' + name + ' from this game.');
   }
   const { name, dialogVisible, hideDialog } = props;
 
@@ -54,7 +52,6 @@ RemovePlayer.propTypes = {
   hideDialog: PropTypes.func.isRequired,
   removePlayer: PropTypes.func.isRequired,
   hidePlayerInfoDialog: PropTypes.func.isRequired,
-  showMessage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

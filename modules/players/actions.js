@@ -25,10 +25,11 @@ export const resetGame = () => {
 }
 
 // remove player
-export const removePlayer = index => {
+export const removePlayer = (index, name) => {
   return {
     type: PlayerActionTypes.REMOVE_PLAYER,
-    index
+    index,
+    name
   }
 }
 

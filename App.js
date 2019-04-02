@@ -1,11 +1,15 @@
 import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers/rootReducer';
 import Scoreboard from './containers/Scoreboard';
+import { customMiddleware } from './containers/Middleware';
 
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+  applyMiddleware(customMiddleware)
+);
 
 const App = () => {
   theme = {

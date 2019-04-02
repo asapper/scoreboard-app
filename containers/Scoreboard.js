@@ -26,9 +26,6 @@ const Scoreboard = props => {
   // dialog: sort menu
   this.showSortMenuDialog = bindActionCreators(DialogActions.showSettingsMenuDialog, dispatch);
 
-  // message snackbar action
-  this.showMessage = bindActionCreators(DialogActions.showMessagesSnackbar, dispatch);
-
   return (
     <View style={styles.container}>
       {/* Appbar header */}
@@ -38,12 +35,12 @@ const Scoreboard = props => {
         showResetGameDialog={this.showResetGameDialog}
       />
       {/* Player list */}
-      <PlayerList showMessage={this.showMessage} />
+      <PlayerList />
       {/* New Player dialog */}
-      <AddPlayerForm showMessage={this.showMessage} />
+      <AddPlayerForm />
       {/* Confirm game reset dialog */}
-      <ResetGame showMessage={this.showMessage} />
-
+      <ResetGame />
+      {/* Snackbar for messages */}
       <Messages  />
     </View>
   );

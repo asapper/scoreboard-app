@@ -21,7 +21,7 @@ import styles from '../styles';
 
 
 const PlayerList = props => {
-  const { dispatch, players, isCurrentGameStarted, highScore, showMessage } = props;
+  const { dispatch, players, isCurrentGameStarted, highScore } = props;
 
   // dialog actions
   // dialog: score input
@@ -69,7 +69,6 @@ const PlayerList = props => {
         removePlayer={this.removePlayer}
         hideDialog={this.hideRemovePlayerDialog}
         hidePlayerInfoDialog={this.hidePlayerInfoDialog}
-        showMessage={showMessage}
       />
     </ScrollView>
   );
@@ -79,7 +78,6 @@ PlayerList.propTypes = {
   players: PropTypes.array.isRequired,
   isCurrentGameStarted: PropTypes.bool.isRequired,
   highScore: PropTypes.number.isRequired,
-  showMessage: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = createStructuredSelector({

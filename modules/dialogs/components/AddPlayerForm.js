@@ -27,7 +27,6 @@ class AddPlayerForm extends Component {
   // verify all necessary props are passed in
   static propTypes = {
     dialogVisible: PropTypes.bool.isRequired,
-    showMessage: PropTypes.func.isRequired,
   }
   
   /**
@@ -57,8 +56,6 @@ class AddPlayerForm extends Component {
       // add new player
       addNewPlayer(playerName);
       this.handleHideDialog();
-      // show success message
-      this.props.showMessage(playerName + ' was added to the game!')
     } else {
       this.setState({ nameInputError: true });
     }

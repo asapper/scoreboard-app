@@ -29,7 +29,6 @@ const ResetGame = props => {
     this.hideDialog();
     // hide parent dialog
     this.hideSettingsDialog();
-    props.showMessage('Game was reset successfully!');
   }
 
   return (
@@ -60,7 +59,6 @@ const ResetGame = props => {
 
 ResetGame.propTypes = {
   dialogVisible: PropTypes.bool.isRequired,
-  showMessage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
