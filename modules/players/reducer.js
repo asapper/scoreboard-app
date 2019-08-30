@@ -94,6 +94,8 @@ export default function Player(state=initialState, action) {
         }
         return player;
       });
+      // sort list
+      sortPlayers(updatedPlayerList, state.sortOrder);
       return {
         ...state,
         players: updatedPlayerList,
